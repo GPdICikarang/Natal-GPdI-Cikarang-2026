@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Natal GPdI Cikarang 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QRCode JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        christmas: {
+                            red: '#C41E3A',
+                            darkred: '#8B0000',
+                            green: '#165B33',
+                            darkgreen: '#0B3B24',
+                            gold: '#D4AF37',
+                            lightgold: '#F4E8C1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+        }
+        .snow-bg {
+            background-color: #fcfbf7;
+            background-image: radial-gradient(#c41e3a 0.5px, transparent 0.5px), radial-gradient(#165b33 0.5px, #fcfbf7 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="bg-christmas-darkgreen text-white shadow-lg border-b-4 border-christmas-gold sticky top-0 z-40 no-print">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-christmas-gold flex items-center justify-center text-christmas-darkgreen font-bold shadow-inner">
+                    <i data-lucide="church" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-lg md:text-xl leading-tight text-christmas-lightgold">GPdI Cikarang</h1>
+                    <p class="text-xs text-emerald-200">Perayaan Natal 2026</p>
+                </div>
+            </div>
+            <button onclick="toggleAdminModal(true)" class="flex items-center space-x-1.5 bg-christmas-red hover:bg-christmas-darkred text-white text-xs md:text-sm font-medium px-3 py-2 rounded-lg transition-all shadow border border-red-400">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>Panel Panitia</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner Hero Dynamic Container -->
+    <div id="hero-banner-container" class="relative overflow-hidden shadow-inner no-print border-b border-christmas-gold/30">
+        <!-- Default Banner Background (Gradients & Pattern) -->
+        <div id="banner-default-bg" class="bg-gradient-to-r from-christmas-darkgreen via-christmas-green to-christmas-darkred text-white py-8 px-4 text-center relative">
+            <div class="absolute -left-10 -top-10 opacity-10 text-white"><i data-lucide="sparkles" class="w-48 h-48"></i></div>
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-white"><i data-lucide="gift" class="w-48 h-48"></i></div>
+            
+            <div class="max-w-3xl mx-auto relative z-10 space-y-2">
+                <span class="inline-block bg-christmas-gold/20 text-christmas-lightgold border border-christmas-gold/40 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-1">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 inline mr-1"></i> Minggu, 13 Desember 2026
+                </span>
+                <h2 class="font-serif text-2xl md:text-4xl font-bold text-white tracking-wide">Pendaftaran Ibadah Natal</h2>
+                <p class="text-emerald-100 text-sm md:text-base max-w-xl mx-auto">
+                    Mari bersama merayakan Kelahiran Sang Juruselamat. Silakan pilih sesi ibadah dan lengkapi data Anda di bawah ini.
+                </p>
+            </div>
+        </div>
+
+        <!-- Custom Image Banner Overlay (Hidden by Default) -->
+        <div id="banner-custom-bg" class="hidden relative w-full max-h-[320px] overflow-hidden bg-slate-900 flex justify-center items-center">
+            <img id="custom-banner-img" src="" alt="Banner Natal GPdI Cikarang 2026" class="w-full h-auto max-h-[320px] object-cover" onerror="handleBannerError()">
+            <!-- Overlay Text Gradient for Readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 text-white text-center">
+                <span class="inline-block mx-auto bg-christmas-gold/90 text-christmas-darkgreen px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-1 shadow">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 inline mr-1"></i> Minggu, 13 Desember 2026
+                </span>
+                <h2 class="font-serif text-2xl md:text-3xl font-bold text-white drop-shadow">Pendaftaran Ibadah Natal GPdI Cikarang</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow">
+
+        <!-- Sisa Kuota Cards -->
+        <div class="mb-8 no-print">
+            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <i data-lucide="users" class="w-4 h-4 text-christmas-red"></i> Info Kuota Ibadah Per Sesi
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Sesi 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">Sesi 1</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">Pukul 10.00 WIB</h4>
+                        </div>
+                        <i data-lucide="sun" class="w-5 h-5 text-amber-500"></i>
+                    </div>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <p class="text-xs text-slate-500">Sisa Kuota</p>
+                            <p id="quota-sesi-1" class="text-2xl font-black text-christmas-darkgreen">300</p>
+                        </div>
+                        <span class="text-xs text-slate-400 font-medium">dari 300 kursi</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full mt-2 overflow-hidden">
+                        <div id="bar-sesi-1" class="bg-emerald-600 h-full rounded-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <!-- Sesi 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">Sesi 2</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">Pukul 15.00 WIB</h4>
+                        </div>
+                        <i data-lucide="sun-medium" class="w-5 h-5 text-blue-500"></i>
+                    </div>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <p class="text-xs text-slate-500">Sisa Kuota</p>
+                            <p id="quota-sesi-2" class="text-2xl font-black text-christmas-darkgreen">300</p>
+                        </div>
+                        <span class="text-xs text-slate-400 font-medium">dari 300 kursi</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full mt-2 overflow-hidden">
+                        <div id="bar-sesi-2" class="bg-blue-600 h-full rounded-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <!-- Sesi 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">Sesi 3</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">Pukul 18.30 WIB</h4>
+                        </div>
+                        <i data-lucide="moon" class="w-5 h-5 text-purple-500"></i>
+                    </div>
+                    <div class="flex justify-between items-end mt-4">
+                        <div>
+                            <p class="text-xs text-slate-500">Sisa Kuota</p>
+                            <p id="quota-sesi-3" class="text-2xl font-black text-christmas-darkgreen">300</p>
+                        </div>
+                        <span class="text-xs text-slate-400 font-medium">dari 300 kursi</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full mt-2 overflow-hidden">
+                        <div id="bar-sesi-3" class="bg-purple-600 h-full rounded-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Form Pendaftaran -->
+        <div id="section-form" class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden no-print">
+            <div class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="file-text" class="w-5 h-5 text-christmas-gold"></i>
+                    <h3 class="font-bold text-lg">Form Registrasi Natal</h3>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <label for="toggle-petugas" class="text-xs text-slate-300 font-medium cursor-pointer">Khusus Pelayan / Petugas</label>
+                    <input type="checkbox" id="toggle-petugas" onchange="toggleFormPetugas()" class="w-4 h-4 text-christmas-red rounded border-gray-300 focus:ring-christmas-red cursor-pointer">
+                </div>
+            </div>
+
+            <form id="registration-form" onsubmit="handleRegistration(event)" class="p-6 space-y-6">
+
+                <!-- FORM TAMU / JEMAAT UMUM -->
+                <div id="form-tamu-container" class="space-y-5">
+                    <div class="border-b pb-2 flex justify-between items-center">
+                        <h4 class="font-semibold text-christmas-darkred flex items-center gap-1.5 text-base">
+                            <i data-lucide="user-check" class="w-4 h-4"></i> Data Pendaftar Tamu / Jemaat
+                        </h4>
+                        <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Maksimal 6 Nama per Form</span>
+                    </div>
+
+                    <!-- Input No HP -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor WhatsApp / No HP Aktif <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </span>
+                            <input type="tel" id="tamu-hp" required placeholder="Contoh: 08123456789" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-christmas-green focus:border-transparent outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Name Inputs -->
+                    <div class="space-y-3">
+                        <label class="block text-xs font-bold text-slate-700 uppercase">Daftar Nama Lengkap Anggota / Tamu <span class="text-red-500">*</span></label>
+                        <div id="names-container" class="space-y-2.5">
+                            <!-- Input Nama Pertama secara default -->
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-bold bg-slate-200 text-slate-600 w-7 h-9 flex items-center justify-center rounded-lg">1</span>
+                                <input type="text" required placeholder="Nama Lengkap 1 (Penanggung Jawab)" class="tamu-nama-input flex-1 px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-christmas-green focus:border-transparent outline-none transition">
+                            </div>
+                        </div>
+
+                        <!-- Button Add/Remove Name -->
+                        <div class="flex items-center justify-between pt-1">
+                            <button type="button" id="btn-add-name" onclick="addNameField()" class="inline-flex items-center text-xs font-semibold text-christmas-green hover:text-christmas-darkgreen bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-200 transition">
+                                <i data-lucide="plus" class="w-3.5 h-3.5 mr-1"></i> Tambah Nama Lain (+ Anggota)
+                            </button>
+                            <span id="name-count-info" class="text-xs text-slate-400">1 dari max 6 nama</span>
+                        </div>
+                    </div>
+
+                    <!-- Pemilihan Sesi Ibadah -->
+                    <div class="pt-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Pilih Sesi Ibadah Natal <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <!-- Option Sesi 1 -->
+                            <label id="label-sesi-1" class="relative border-2 border-slate-200 rounded-xl p-3 flex flex-col cursor-pointer hover:border-emerald-500 transition shadow-sm">
+                                <input type="radio" name="sesi_ibadah" value="Sesi 1" required class="sr-only" onchange="highlightSelectedSesi(this)">
+                                <span class="text-xs font-bold text-emerald-700">Sesi 1</span>
+                                <span class="font-bold text-slate-800 text-sm mt-0.5">10.00 WIB</span>
+                                <span class="text-[11px] text-slate-500 mt-2" id="label-quota-1">Kuota: 300</span>
+                            </label>
+
+                            <!-- Option Sesi 2 -->
+                            <label id="label-sesi-2" class="relative border-2 border-slate-200 rounded-xl p-3 flex flex-col cursor-pointer hover:border-blue-500 transition shadow-sm">
+                                <input type="radio" name="sesi_ibadah" value="Sesi 2" required class="sr-only" onchange="highlightSelectedSesi(this)">
+                                <span class="text-xs font-bold text-blue-700">Sesi 2</span>
+                                <span class="font-bold text-slate-800 text-sm mt-0.5">15.00 WIB</span>
+                                <span class="text-[11px] text-slate-500 mt-2" id="label-quota-2">Kuota: 300</span>
+                            </label>
+
+                            <!-- Option Sesi 3 -->
+                            <label id="label-sesi-3" class="relative border-2 border-slate-200 rounded-xl p-3 flex flex-col cursor-pointer hover:border-purple-500 transition shadow-sm">
+                                <input type="radio" name="sesi_ibadah" value="Sesi 3" required class="sr-only" onchange="highlightSelectedSesi(this)">
+                                <span class="text-xs font-bold text-purple-700">Sesi 3</span>
+                                <span class="font-bold text-slate-800 text-sm mt-0.5">18.30 WIB</span>
+                                <span class="text-[11px] text-slate-500 mt-2" id="label-quota-3">Kuota: 300</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORM KHUSUS PETUGAS / PELAYAN -->
+                <div id="form-petugas-container" class="hidden space-y-5 bg-amber-50/60 border border-amber-200 p-4 rounded-xl">
+                    <div class="border-b border-amber-200 pb-2 flex justify-between items-center">
+                        <h4 class="font-semibold text-amber-800 flex items-center gap-1.5 text-base">
+                            <i data-lucide="award" class="w-4 h-4 text-amber-600"></i> Form Khusus Pelayanan / Petugas
+                        </h4>
+                        <span class="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-medium">Tidak Mengurangi Kuota Jemaat</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Petugas <span class="text-red-500">*</span></label>
+                        <input type="text" id="petugas-nama" placeholder="Masukkan Nama Lengkap Petugas" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">No. HP / WhatsApp <span class="text-red-500">*</span></label>
+                        <input type="tel" id="petugas-hp" placeholder="Contoh: 08123456789" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pilihan Sesi Tugas <span class="text-red-500">*</span></label>
+                        <select id="petugas-sesi" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none">
+                            <option value="">-- Pilih Sesi Tugas --</option>
+                            <option value="Sesi 1">Sesi 1 (10.00 WIB)</option>
+                            <option value="Sesi 2">Sesi 2 (15.00 WIB)</option>
+                            <option value="Sesi 3">Sesi 3 (18.30 WIB)</option>
+                            <option value="Sesi 1 & 2">Sesi 1 & 2</option>
+                            <option value="Sesi 1 & 3">Sesi 1 & 3</option>
+                            <option value="Sesi 2 & 3">Sesi 2 & 3</option>
+                            <option value="Sesi 1, 2 & 3">Sesi 1, 2 & 3 (Semua Sesi)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-christmas-red hover:bg-christmas-darkred text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center space-x-2 text-base">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>Kirim Pendaftaran Sekarang</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Section Bukti Pendaftaran / E-Tiket -->
+        <div id="section-ticket" class="hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden max-w-lg mx-auto print:max-w-full print:shadow-none print:border-none">
+                <!-- Ticket Header -->
+                <div class="bg-gradient-to-r from-christmas-darkgreen to-christmas-green p-6 text-white text-center relative overflow-hidden">
+                    <div class="absolute right-2 top-2 opacity-10"><i data-lucide="church" class="w-24 h-24"></i></div>
+                    <p class="text-xs tracking-widest text-christmas-gold uppercase font-semibold">E-Tiket Masuk Ibadah</p>
+                    <h3 class="text-2xl font-serif font-bold text-white mt-1">Perayaan Natal GPdI Cikarang</h3>
+                    <p class="text-xs text-emerald-100 mt-1">Minggu, 13 Desember 2026</p>
+                </div>
+
+                <!-- Ticket Content -->
+                <div class="p-6 space-y-5 bg-white relative">
+                    <!-- Dashed Divider Effect -->
+                    <div class="flex justify-between items-center bg-slate-50 border border-slate-200 rounded-xl p-3 text-center">
+                        <div class="w-full">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Kode Registrasi Unik</p>
+                            <p id="ticket-code" class="text-2xl font-black text-christmas-red tracking-wider font-mono">NATAL2026-X89A</p>
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="flex flex-col items-center justify-center py-2">
+                        <div id="qrcode" class="p-2 bg-white border border-slate-200 rounded-lg shadow-sm"></div>
+                        <p class="text-[11px] text-slate-400 mt-2 text-center">Tunjukkan QR Code ini kepada panitia pintu masuk</p>
+                    </div>
+
+                    <!-- Details Table -->
+                    <div class="space-y-3 text-sm border-t border-b border-slate-100 py-4">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Kategori:</span>
+                            <span id="ticket-category" class="font-bold text-slate-800">Tamu / Jemaat</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">No. WhatsApp/HP:</span>
+                            <span id="ticket-hp" class="font-semibold text-slate-800">08123456789</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Sesi Ibadah / Tugas:</span>
+                            <span id="ticket-sesi" class="font-bold text-christmas-darkgreen bg-emerald-50 px-2 py-0.5 rounded">Sesi 1 (10.00 WIB)</span>
+                        </div>
+                        <div class="border-t border-slate-100 pt-2">
+                            <span class="text-slate-500 block mb-1">Daftar Nama Peserta (<span id="ticket-count">1</span> orang):</span>
+                            <ul id="ticket-names-list" class="list-disc list-inside font-semibold text-slate-800 space-y-0.5 pl-1">
+                                <!-- Names inserted dynamically -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <div class="text-center text-xs text-slate-400 space-y-1">
+                        <p>Lokasi: Gedung GPdI Cikarang</p>
+                        <p>Harap hadir 15 menit sebelum sesi dimulai.</p>
+                    </div>
+                </div>
+
+                <!-- Ticket Action Buttons -->
+                <div class="bg-slate-50 p-4 border-t border-slate-200 flex flex-col sm:flex-row gap-2 no-print">
+                    <button onclick="window.print()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-medium py-2.5 px-4 rounded-xl text-sm flex items-center justify-center space-x-1.5 transition">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        <span>Cetak / Simpan PDF</span>
+                    </button>
+                    <button onclick="resetToForm()" class="flex-1 bg-christmas-green hover:bg-christmas-darkgreen text-white font-medium py-2.5 px-4 rounded-xl text-sm flex items-center justify-center space-x-1.5 transition">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                        <span>Daftar Lagi</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800 text-center no-print">
+        <div class="max-w-4xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-slate-300">Panitia Perayaan Natal GPdI Cikarang 2026</p>
+            <p>&copy; 2026 GPdI Cikarang. Seluruh hak cipta dilindungi undang-undang.</p>
+        </div>
+    </footer>
+
+
+    <!-- MODAL PANEL ADMIN & PANITIA -->
+    <div id="admin-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+            
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-christmas-gold"></i>
+                    <h3 class="font-bold text-lg">Panel Admin Panitia Natal 2026</h3>
+                </div>
+                <button onclick="toggleAdminModal(false)" class="text-slate-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 overflow-y-auto flex-grow space-y-6">
+
+                <!-- Login Screen jika Belum Authenticated -->
+                <div id="admin-login-view" class="max-w-xs mx-auto py-8 text-center space-y-4">
+                    <div class="w-12 h-12 bg-red-100 text-christmas-red rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-base">Akses Khusus Panitia</h4>
+                        <p class="text-xs text-slate-500 mt-1">Masukkan password panitia untuk mengelola data pendaftaran.</p>
+                    </div>
+                    <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+                        <input type="password" id="admin-pass-input" placeholder="Password (default: admin123)" class="w-full px-3 py-2 border rounded-lg text-sm text-center focus:ring-2 focus:ring-christmas-red outline-none">
+                        <button type="submit" class="w-full bg-christmas-red hover:bg-christmas-darkred text-white text-sm font-semibold py-2 rounded-lg transition">Masuk Panel</button>
+                    </form>
+                </div>
+
+                <!-- Admin Dashboard View -->
+                <div id="admin-dashboard-view" class="hidden space-y-5">
+                    
+                    <!-- KONTROL PENGATURAN BANNER HEADER -->
+                    <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-3">
+                        <div class="flex items-center justify-between border-b border-amber-200 pb-2">
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+                                <i data-lucide="image" class="w-4 h-4 text-christmas-red"></i> Pengaturan Banner Header
+                            </h4>
+                            <button onclick="resetBannerDefault()" class="text-xs text-red-600 hover:text-red-800 font-semibold flex items-center gap-1">
+                                <i data-lucide="rotate-ccw" class="w-3 h-3"></i> Reset Default
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <!-- Opsi 1: Upload File Gambar -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                                <label class="block font-bold text-slate-700">1. Unggah Gambar dari Komputer / HP</label>
+                                <input type="file" id="banner-file-input" accept="image/*" onchange="handleBannerFileUpload(event)" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-christmas-green file:text-white hover:file:bg-christmas-darkgreen cursor-pointer">
+                                <p class="text-[10px] text-slate-400">Rekomendasi rasio: 16:9 atau landscape banner (PNG, JPG, WebP).</p>
+                            </div>
+
+                            <!-- Opsi 2: Input URL Gambar -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-2">
+                                <label class="block font-bold text-slate-700">2. Gunakan Tautan / URL Gambar</label>
+                                <div class="flex space-x-1.5">
+                                    <input type="url" id="banner-url-input" placeholder="https://domain.com/banner.jpg" class="flex-1 px-2.5 py-1.5 border rounded-md text-xs outline-none focus:ring-1 focus:ring-christmas-green">
+                                    <button onclick="saveBannerUrl()" class="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded-md font-semibold transition">Terapkan</button>
+                                </div>
+                                <p class="text-[10px] text-slate-400">Masukkan link publik gambar banner pilihan Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Bar -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <span class="text-xs text-slate-500 block">Total Tamu</span>
+                            <span id="stat-total-tamu" class="text-xl font-bold text-slate-800">0</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <span class="text-xs text-slate-500 block">Total Petugas</span>
+                            <span id="stat-total-petugas" class="text-xl font-bold text-amber-700">0</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <span class="text-xs text-slate-500 block">Total Registrasi</span>
+                            <span id="stat-total-reg" class="text-xl font-bold text-blue-700">0</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <span class="text-xs text-slate-500 block">Total Sisa Kuota</span>
+                            <span id="stat-total-sisa" class="text-xl font-bold text-emerald-700">900</span>
+                        </div>
+                    </div>
+
+                    <!-- Toolbar Actions -->
+                    <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <div class="flex items-center space-x-2">
+                            <input type="text" id="admin-search" oninput="renderAdminTable()" placeholder="Cari Nama / No HP / Kode..." class="px-3 py-1.5 border rounded-lg text-xs w-48 sm:w-64 outline-none focus:ring-1 focus:ring-slate-400">
+                            <select id="admin-filter-type" onchange="renderAdminTable()" class="px-2 py-1.5 border rounded-lg text-xs outline-none bg-white">
+                                <option value="ALL">Semua Tipe</option>
+                                <option value="Tamu">Jemaat/Tamu</option>
+                                <option value="Petugas">Petugas/Pelayan</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center space-x-1 transition">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                <span>Ekspor CSV/Excel</span>
+                            </button>
+                            <button onclick="confirmResetAllData()" class="bg-red-100 hover:bg-red-200 text-red-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                                Reset Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Table Data -->
+                    <div class="overflow-x-auto border border-slate-200 rounded-xl max-h-80">
+                        <table class="w-full text-xs text-left text-slate-600">
+                            <thead class="bg-slate-100 text-slate-700 uppercase sticky top-0 font-bold border-b border-slate-200">
+                                <tr>
+                                    <th class="px-3 py-2.5">Kode Unik</th>
+                                    <th class="px-3 py-2.5">Tipe</th>
+                                    <th class="px-3 py-2.5">Daftar Nama</th>
+                                    <th class="px-3 py-2.5">No HP</th>
+                                    <th class="px-3 py-2.5">Sesi</th>
+                                    <th class="px-3 py-2.5 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body" class="divide-y divide-slate-200 bg-white">
+                                <!-- Data rows inserted dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDIT DATA (ADMIN) -->
+    <div id="edit-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 no-print">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6 space-y-4">
+            <h3 class="font-bold text-slate-800 text-base">Edit Data Pendaftaran</h3>
+            <form onsubmit="saveEditData(event)" class="space-y-3">
+                <input type="hidden" id="edit-id">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Kode Unik</label>
+                    <input type="text" id="edit-code" disabled class="w-full px-3 py-1.5 bg-slate-100 border rounded text-xs text-slate-500 font-mono">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">No HP</label>
+                    <input type="text" id="edit-hp" required class="w-full px-3 py-1.5 border rounded text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Daftar Nama (Pisahkan dengan Koma)</label>
+                    <textarea id="edit-names" required rows="3" class="w-full px-3 py-1.5 border rounded text-xs"></textarea>
+                </div>
+                <div id="edit-sesi-container">
+                    <!-- Dynamic dropdown for Sesi depending on TAMU or PETUGAS -->
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeEditModal()" class="px-3 py-1.5 border rounded text-xs font-medium">Batal</button>
+                    <button type="submit" class="px-3 py-1.5 bg-christmas-green text-white rounded text-xs font-semibold">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // CONFIG & INITIAL STATE
+        const MAX_QUOTA = 300;
+        let currentNameCount = 1;
+
+        // Default Data Structure in LocalStorage
+        let registrations = JSON.parse(localStorage.getItem('gpdic_registrations')) || [];
+
+        // Initialize App
+        window.onload = function() {
+            lucide.createIcons();
+            updateQuotaUI();
+            loadSavedBanner();
+        };
+
+        // BANNER HEADER MANAGEMENT
+        function loadSavedBanner() {
+            const savedBanner = localStorage.getItem('gpdic_custom_banner');
+            const defaultBg = document.getElementById('banner-default-bg');
+            const customBg = document.getElementById('banner-custom-bg');
+            const customImg = document.getElementById('custom-banner-img');
+
+            if (savedBanner) {
+                customImg.src = savedBanner;
+                defaultBg.classList.add('hidden');
+                customBg.classList.remove('hidden');
+            } else {
+                defaultBg.classList.remove('hidden');
+                customBg.classList.add('hidden');
+            }
+        }
+
+        function handleBannerFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Limit file size (max 3MB for LocalStorage stability)
+            if (file.size > 3 * 1024 * 1024) {
+                alert('Ukuran berkas gambar terlalu besar. Silakan pilih gambar di bawah 3 MB.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Image = e.target.result;
+                try {
+                    localStorage.setItem('gpdic_custom_banner', base64Image);
+                    loadSavedBanner();
+                    alert('Banner header berhasil diperbarui!');
+                } catch (err) {
+                    alert('Gagal menyimpan gambar. Kapasitas penyimpanan browser penuh.');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveBannerUrl() {
+            const url = document.getElementById('banner-url-input').value.trim();
+            if (!url) {
+                alert('Masukkan URL gambar terlebih dahulu.');
+                return;
+            }
+
+            localStorage.setItem('gpdic_custom_banner', url);
+            loadSavedBanner();
+            alert('Banner dari URL berhasil diterapkan!');
+        }
+
+        function resetBannerDefault() {
+            localStorage.removeItem('gpdic_custom_banner');
+            document.getElementById('banner-url-input').value = '';
+            document.getElementById('banner-file-input').value = '';
+            loadSavedBanner();
+            alert('Banner telah dikembalikan ke tampilan awal.');
+        }
+
+        function handleBannerError() {
+            alert('Gagal memuat gambar banner dari URL. Kembali ke tampilan default.');
+            resetBannerDefault();
+        }
+
+        // UI HELPERS
+        function updateQuotaUI() {
+            // Count registered guests per session
+            let used1 = 0, used2 = 0, used3 = 0;
+
+            registrations.forEach(item => {
+                if (item.type === 'Tamu') {
+                    const count = item.names.length;
+                    if (item.sesi === 'Sesi 1') used1 += count;
+                    if (item.sesi === 'Sesi 2') used2 += count;
+                    if (item.sesi === 'Sesi 3') used3 += count;
+                }
+            });
+
+            const remaining1 = Math.max(0, MAX_QUOTA - used1);
+            const remaining2 = Math.max(0, MAX_QUOTA - used2);
+            const remaining3 = Math.max(0, MAX_QUOTA - used3);
+
+            // Update text counter
+            document.getElementById('quota-sesi-1').innerText = remaining1;
+            document.getElementById('quota-sesi-2').innerText = remaining2;
+            document.getElementById('quota-sesi-3').innerText = remaining3;
+
+            // Update Labels in form
+            document.getElementById('label-quota-1').innerText = `Sisa Kuota: ${remaining1}`;
+            document.getElementById('label-quota-2').innerText = `Sisa Kuota: ${remaining2}`;
+            document.getElementById('label-quota-3').innerText = `Sisa Kuota: ${remaining3}`;
+
+            // Update Progress Bars
+            document.getElementById('bar-sesi-1').style.width = `${(remaining1 / MAX_QUOTA) * 100}%`;
+            document.getElementById('bar-sesi-2').style.width = `${(remaining2 / MAX_QUOTA) * 100}%`;
+            document.getElementById('bar-sesi-3').style.width = `${(remaining3 / MAX_QUOTA) * 100}%`;
+
+            // Disable radio buttons if quota full
+            toggleRadioQuota('label-sesi-1', remaining1);
+            toggleRadioQuota('label-sesi-2', remaining2);
+            toggleRadioQuota('label-sesi-3', remaining3);
+        }
+
+        function toggleRadioQuota(labelId, remaining) {
+            const label = document.getElementById(labelId);
+            const input = label.querySelector('input');
+            
+            if (remaining <= 0) {
+                label.classList.add('opacity-50', 'bg-slate-100', 'cursor-not-allowed');
+                input.disabled = true;
+            } else {
+                label.classList.remove('opacity-50', 'bg-slate-100', 'cursor-not-allowed');
+                input.disabled = false;
+            }
+        }
+
+        // DYNAMIC FORM NAMES (Max 6)
+        function addNameField() {
+            if (currentNameCount >= 6) {
+                alert('Maksimal pendaftaran adalah 6 nama per form.');
+                return;
+            }
+
+            currentNameCount++;
+            const container = document.getElementById('names-container');
+            
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2 name-input-row';
+            div.id = `name-row-${currentNameCount}`;
+            div.innerHTML = `
+                <span class="text-xs font-bold bg-slate-200 text-slate-600 w-7 h-9 flex items-center justify-center rounded-lg">${currentNameCount}</span>
+                <input type="text" required placeholder="Nama Lengkap ${currentNameCount}" class="tamu-nama-input flex-1 px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-christmas-green focus:border-transparent outline-none transition">
+                <button type="button" onclick="removeNameField(${currentNameCount})" class="p-2 text-slate-400 hover:text-red-500 transition">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+            `;
+
+            container.appendChild(div);
+            lucide.createIcons();
+            document.getElementById('name-count-info').innerText = `${currentNameCount} dari max 6 nama`;
+        }
+
+        function removeNameField(id) {
+            const row = document.getElementById(`name-row-${id}`);
+            if (row) {
+                row.remove();
+                currentNameCount--;
+                reindexNameFields();
+            }
+        }
+
+        function reindexNameFields() {
+            const rows = document.querySelectorAll('#names-container > div');
+            currentNameCount = rows.length;
+            rows.forEach((row, idx) => {
+                const countNumber = idx + 1;
+                row.querySelector('span').innerText = countNumber;
+                const input = row.querySelector('input');
+                input.placeholder = idx === 0 ? 'Nama Lengkap 1 (Penanggung Jawab)' : `Nama Lengkap ${countNumber}`;
+            });
+            document.getElementById('name-count-info').innerText = `${currentNameCount} dari max 6 nama`;
+        }
+
+        // TOGGLE PETUGAS VS TAMU
+        function toggleFormPetugas() {
+            const isPetugas = document.getElementById('toggle-petugas').checked;
+            const formTamu = document.getElementById('form-tamu-container');
+            const formPetugas = document.getElementById('form-petugas-container');
+
+            if (isPetugas) {
+                formTamu.classList.add('hidden');
+                formPetugas.classList.remove('hidden');
+
+                // Toggle required attributes
+                document.getElementById('tamu-hp').removeAttribute('required');
+                document.querySelectorAll('.tamu-nama-input').forEach(i => i.removeAttribute('required'));
+                document.querySelectorAll('input[name="sesi_ibadah"]').forEach(i => i.removeAttribute('required'));
+
+                document.getElementById('petugas-nama').setAttribute('required', 'true');
+                document.getElementById('petugas-hp').setAttribute('required', 'true');
+                document.getElementById('petugas-sesi').setAttribute('required', 'true');
+            } else {
+                formTamu.classList.remove('hidden');
+                formPetugas.classList.add('hidden');
+
+                // Reset required attributes
+                document.getElementById('tamu-hp').setAttribute('required', 'true');
+                document.querySelectorAll('.tamu-nama-input').forEach(i => i.setAttribute('required', 'true'));
+                document.querySelectorAll('input[name="sesi_ibadah"]').forEach(i => i.setAttribute('required', 'true'));
+
+                document.getElementById('petugas-nama').removeAttribute('required');
+                document.getElementById('petugas-hp').removeAttribute('required');
+                document.getElementById('petugas-sesi').removeAttribute('required');
+            }
+        }
+
+        function highlightSelectedSesi(radio) {
+            // Reset all borders
+            ['label-sesi-1', 'label-sesi-2', 'label-sesi-3'].forEach(id => {
+                document.getElementById(id).classList.remove('border-emerald-600', 'border-blue-600', 'border-purple-600', 'bg-emerald-50/50', 'bg-blue-50/50', 'bg-purple-50/50');
+            });
+
+            // Highlight chosen
+            if (radio.value === 'Sesi 1') radio.parentElement.classList.add('border-emerald-600', 'bg-emerald-50/50');
+            if (radio.value === 'Sesi 2') radio.parentElement.classList.add('border-blue-600', 'bg-blue-50/50');
+            if (radio.value === 'Sesi 3') radio.parentElement.classList.add('border-purple-600', 'bg-purple-50/50');
+        }
+
+        // GENERATE UNIQUE CODE
+        function generateUniqueCode() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let result = 'NATAL2026-';
+            for (let i = 0; i < 4; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // FORM SUBMISSION
+        function handleRegistration(event) {
+            event.preventDefault();
+
+            const isPetugas = document.getElementById('toggle-petugas').checked;
+            const code = generateUniqueCode();
+            let newReg = {};
+
+            if (isPetugas) {
+                const nama = document.getElementById('petugas-nama').value.trim();
+                const hp = document.getElementById('petugas-hp').value.trim();
+                const sesi = document.getElementById('petugas-sesi').value;
+
+                newReg = {
+                    id: Date.now(),
+                    code: code,
+                    type: 'Petugas',
+                    names: [nama],
+                    hp: hp,
+                    sesi: sesi,
+                    timestamp: new Date().toLocaleString('id-ID')
+                };
+            } else {
+                const hp = document.getElementById('tamu-hp').value.trim();
+                const nameInputs = document.querySelectorAll('.tamu-nama-input');
+                const names = Array.from(nameInputs).map(i => i.value.trim()).filter(n => n !== '');
+                const sesiElement = document.querySelector('input[name="sesi_ibadah"]:checked');
+
+                if (!sesiElement) {
+                    alert('Silakan pilih sesi ibadah.');
+                    return;
+                }
+
+                const sesi = sesiElement.value;
+
+                // Validate Quota
+                let used = 0;
+                registrations.filter(r => r.type === 'Tamu' && r.sesi === sesi).forEach(r => used += r.names.length);
+                
+                if (used + names.length > MAX_QUOTA) {
+                    alert(`Maaf, kuota untuk ${sesi} tidak mencukupi untuk ${names.length} orang. Sisa kuota hanya ${MAX_QUOTA - used} kursi.`);
+                    return;
+                }
+
+                newReg = {
+                    id: Date.now(),
+                    code: code,
+                    type: 'Tamu',
+                    names: names,
+                    hp: hp,
+                    sesi: sesi,
+                    timestamp: new Date().toLocaleString('id-ID')
+                };
+            }
+
+            // Save Data
+            registrations.push(newReg);
+            localStorage.setItem('gpdic_registrations', JSON.stringify(registrations));
+
+            // Update UI
+            updateQuotaUI();
+            showTicket(newReg);
+        }
+
+        // DISPLAY TICKET
+        function showTicket(reg) {
+            document.getElementById('section-form').classList.add('hidden');
+            document.getElementById('section-ticket').classList.remove('hidden');
+
+            document.getElementById('ticket-code').innerText = reg.code;
+            document.getElementById('ticket-category').innerText = reg.type === 'Petugas' ? 'Khusus Pelayan / Petugas' : 'Tamu / Jemaat';
+            document.getElementById('ticket-hp').innerText = reg.hp;
+            document.getElementById('ticket-sesi').innerText = reg.sesi;
+            document.getElementById('ticket-count').innerText = reg.names.length;
+
+            const list = document.getElementById('ticket-names-list');
+            list.innerHTML = '';
+            reg.names.forEach(n => {
+                const li = document.createElement('li');
+                li.innerText = n;
+                list.appendChild(li);
+            });
+
+            // Generate QR Code
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: reg.code,
+                width: 120,
+                height: 120,
+                colorDark : "#165b33",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetToForm() {
+            document.getElementById('registration-form').reset();
+            document.getElementById('section-ticket').classList.add('hidden');
+            document.getElementById('section-form').classList.remove('hidden');
+            
+            // Reset dynamic fields
+            document.getElementById('names-container').innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-bold bg-slate-200 text-slate-600 w-7 h-9 flex items-center justify-center rounded-lg">1</span>
+                    <input type="text" required placeholder="Nama Lengkap 1 (Penanggung Jawab)" class="tamu-nama-input flex-1 px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-christmas-green focus:border-transparent outline-none transition">
+                </div>
+            `;
+            currentNameCount = 1;
+            document.getElementById('name-count-info').innerText = '1 dari max 6 nama';
+
+            // Reset Toggle Form
+            document.getElementById('toggle-petugas').checked = false;
+            toggleFormPetugas();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        // ADMIN PANEL LOGIC
+        let isAdminLoggedIn = false;
+
+        function toggleAdminModal(show) {
+            const modal = document.getElementById('admin-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                if (isAdminLoggedIn) {
+                    renderAdminDashboard();
+                } else {
+                    document.getElementById('admin-login-view').classList.remove('hidden');
+                    document.getElementById('admin-dashboard-view').classList.add('hidden');
+                }
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('admin-pass-input').value;
+            if (pass === 'admin123') {
+                isAdminLoggedIn = true;
+                renderAdminDashboard();
+            } else {
+                alert('Password Admin Salah! (Gunakan: admin123)');
+            }
+        }
+
+        function renderAdminDashboard() {
+            document.getElementById('admin-login-view').classList.add('hidden');
+            document.getElementById('admin-dashboard-view').classList.remove('hidden');
+            renderAdminTable();
+        }
+
+        function renderAdminTable() {
+            const query = document.getElementById('admin-search').value.toLowerCase();
+            const filterType = document.getElementById('admin-filter-type').value;
+
+            let totalTamu = 0;
+            let totalPetugas = 0;
+
+            registrations.forEach(r => {
+                if (r.type === 'Tamu') totalTamu += r.names.length;
+                if (r.type === 'Petugas') totalPetugas += 1;
+            });
+
+            document.getElementById('stat-total-tamu').innerText = totalTamu;
+            document.getElementById('stat-total-petugas').innerText = totalPetugas;
+            document.getElementById('stat-total-reg').innerText = registrations.length;
+            document.getElementById('stat-total-sisa').innerText = 900 - totalTamu;
+
+            const tbody = document.getElementById('admin-table-body');
+            tbody.innerHTML = '';
+
+            const filtered = registrations.filter(r => {
+                const matchType = filterType === 'ALL' || r.type === filterType;
+                const matchSearch = r.code.toLowerCase().includes(query) ||
+                                    r.hp.includes(query) ||
+                                    r.names.some(n => n.toLowerCase().includes(query));
+                return matchType && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-slate-400">Tidak ada data pendaftaran ditemukan.</td></tr>`;
+                return;
+            }
+
+            filtered.reverse().forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-slate-100 hover:bg-slate-50';
+
+                tr.innerHTML = `
+                    <td class="px-3 py-2.5 font-mono font-bold text-christmas-red">${item.code}</td>
+                    <td class="px-3 py-2.5">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold ${item.type === 'Petugas' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'}">
+                            ${item.type}
+                        </span>
+                    </td>
+                    <td class="px-3 py-2.5">
+                        <span class="font-semibold text-slate-800">${item.names.join(', ')}</span>
+                        <span class="text-[10px] text-slate-400 block">(${item.names.length} orang)</span>
+                    </td>
+                    <td class="px-3 py-2.5">${item.hp}</td>
+                    <td class="px-3 py-2.5 font-medium">${item.sesi}</td>
+                    <td class="px-3 py-2.5 text-center">
+                        <div class="flex items-center justify-center space-x-1">
+                            <button onclick="openEditModal(${item.id})" class="p-1 text-slate-500 hover:text-blue-600">
+                                <i data-lucide="edit-3" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="deleteRegistration(${item.id})" class="p-1 text-slate-500 hover:text-red-600">
+                                <i data-lucide="trash" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            lucide.createIcons();
+        }
+
+        // EDIT & DELETE ACTIONS
+        function deleteRegistration(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini? Kuota akan dikembalikan secara otomatis.')) {
+                registrations = registrations.filter(r => r.id !== id);
+                localStorage.setItem('gpdic_registrations', JSON.stringify(registrations));
+                updateQuotaUI();
+                renderAdminTable();
+            }
+        }
+
+        function openEditModal(id) {
+            const item = registrations.find(r => r.id === id);
+            if (!item) return;
+
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('edit-code').value = item.code;
+            document.getElementById('edit-hp').value = item.hp;
+            document.getElementById('edit-names').value = item.names.join(', ');
+
+            const sesiContainer = document.getElementById('edit-sesi-container');
+            if (item.type === 'Tamu') {
+                sesiContainer.innerHTML = `
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Sesi Ibadah</label>
+                    <select id="edit-sesi" class="w-full px-3 py-1.5 border rounded text-xs">
+                        <option value="Sesi 1" ${item.sesi === 'Sesi 1' ? 'selected' : ''}>Sesi 1 (10.00 WIB)</option>
+                        <option value="Sesi 2" ${item.sesi === 'Sesi 2' ? 'selected' : ''}>Sesi 2 (15.00 WIB)</option>
+                        <option value="Sesi 3" ${item.sesi === 'Sesi 3' ? 'selected' : ''}>Sesi 3 (18.30 WIB)</option>
+                    </select>
+                `;
+            } else {
+                sesiContainer.innerHTML = `
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Sesi Tugas Petugas</label>
+                    <select id="edit-sesi" class="w-full px-3 py-1.5 border rounded text-xs">
+                        <option value="Sesi 1" ${item.sesi === 'Sesi 1' ? 'selected' : ''}>Sesi 1</option>
+                        <option value="Sesi 2" ${item.sesi === 'Sesi 2' ? 'selected' : ''}>Sesi 2</option>
+                        <option value="Sesi 3" ${item.sesi === 'Sesi 3' ? 'selected' : ''}>Sesi 3</option>
+                        <option value="Sesi 1 & 2" ${item.sesi === 'Sesi 1 & 2' ? 'selected' : ''}>Sesi 1 & 2</option>
+                        <option value="Sesi 1 & 3" ${item.sesi === 'Sesi 1 & 3' ? 'selected' : ''}>Sesi 1 & 3</option>
+                        <option value="Sesi 2 & 3" ${item.sesi === 'Sesi 2 & 3' ? 'selected' : ''}>Sesi 2 & 3</option>
+                        <option value="Sesi 1, 2 & 3" ${item.sesi === 'Sesi 1, 2 & 3' ? 'selected' : ''}>Sesi 1, 2 & 3</option>
+                    </select>
+                `;
+            }
+
+            document.getElementById('edit-modal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+        }
+
+        function saveEditData(e) {
+            e.preventDefault();
+            const id = parseInt(document.getElementById('edit-id').value);
+            const item = registrations.find(r => r.id === id);
+
+            if (item) {
+                item.hp = document.getElementById('edit-hp').value.trim();
+                item.names = document.getElementById('edit-names').value.split(',').map(n => n.trim()).filter(n => n !== '');
+                item.sesi = document.getElementById('edit-sesi').value;
+
+                localStorage.setItem('gpdic_registrations', JSON.stringify(registrations));
+                updateQuotaUI();
+                renderAdminTable();
+                closeEditModal();
+            }
+        }
+
+        function confirmResetAllData() {
+            if (confirm('PERINGATAN! Anda akan menghapus seluruh data pendaftaran. Lanjutkan?')) {
+                registrations = [];
+                localStorage.removeItem('gpdic_registrations');
+                updateQuotaUI();
+                renderAdminTable();
+            }
+        }
+
+        // EXPORT TO CSV
+        function exportToCSV() {
+            if (registrations.length === 0) {
+                alert('Tidak ada data untuk diekspor.');
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Kode Unik,Tipe,Nama Peserta,No HP,Sesi,Waktu Daftar\n";
+
+            registrations.forEach(r => {
+                const namesClean = `"${r.names.join('; ')}"`;
+                csvContent += `${r.code},${r.type},${namesClean},'${r.hp},${r.sesi},${r.timestamp}\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Rekap_Natal_GPdI_Cikarang_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
